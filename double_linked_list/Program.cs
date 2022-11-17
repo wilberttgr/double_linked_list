@@ -73,6 +73,29 @@ namespace double_linked_list
             for (previous = current = START; current != null && rollNo != current.rollNumber; previous = current, current = current.next) { }
             return (current != null);
         }
+        public bool dellNode(int rollNo)
+        {
+            Node previous, current;
+            previous = current = null;
+            if (search(rollNo, ref previous, ref current) == false)
+                return false;
+            if (current == START)
+            {
+                START = START.next;
+                if (START != null)
+                    START.prev = null;
+                return true;
+            }
+            if (current.next == null)
+            {
+                previous.next = null;
+                return true;
+            }
+            previous.next = current.next;
+            current.next.prev = previous;
+            return true;
+        }
+
     }
     internal class Program
     {
