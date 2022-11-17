@@ -95,6 +95,45 @@ namespace double_linked_list
             current.next.prev = previous;
             return true;
         }
+        public void traverse()
+        {
+            if (listEmpty())
+                Console.WriteLine("\nList is empty");
+            else
+            {
+                Console.WriteLine("\nRecord in the ascending order of " + "roll numbers are:\n");
+                Node currentNode;
+                for (currentNode = START; currentNode != null;
+                    currentNode = currentNode.next)
+                    Console.Write(currentNode.rollNumber + "  " + currentNode.name + "\n");
+            }
+        }
+
+        public void revtraverse()
+        {
+            if (listEmpty())
+                Console.WriteLine("\nList is empty");
+            else
+            {
+                Console.WriteLine("\nRecords in the descending order of " + "roll numbers are:\n");
+                Node currentNode;
+                for (currentNode = START; currentNode.next != null;
+                    currentNode = currentNode.next)
+                { }
+                while (currentNode != null)
+                {
+                    Console.Write(currentNode.rollNumber + "  " + currentNode.name + "\n");
+                    currentNode = currentNode.prev;
+                }
+            }
+        }
+        public bool listEmpty()
+        {
+            if (START == null)
+                return true;
+            else
+                return false;
+        }
 
     }
     internal class Program
